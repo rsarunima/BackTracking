@@ -1,0 +1,47 @@
+public class PermutationofString {
+
+	public static void main(String[] args) {
+
+         String str="abc";
+         
+         permutation(str);
+
+	}
+
+	private static void permutation(String str) {
+		
+		char[] chars=str.toCharArray();	
+		
+		backtrack(chars,0);
+	}
+
+	private static void backtrack(char[] chars, int index) {
+		
+		if(index==chars.length) {
+			
+			System.out.println(new String(chars));
+			
+			return;
+		}
+		
+		for(int i=index;i<chars.length;i++) {
+			
+			swap(chars,index,i);
+			
+			backtrack(chars,index+1);
+			
+			swap(chars,index,i);
+			
+		}
+		
+	}
+
+	private static void swap(char[] chars, int i, int j) {
+		
+		char temp=chars[i];
+		chars[i]=chars[j];
+		chars[j]=temp;
+		
+	}
+
+}
